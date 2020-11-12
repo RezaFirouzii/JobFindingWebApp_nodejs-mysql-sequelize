@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     Commercial.findAll().then(commercials => {
         res.render('commercials', {
             commercials,
-            title: "Job Finding App | Commercials"
+            title: "Hire Community | Commercials"
         });
     }).catch(err => console.log(err));
 });

@@ -5,7 +5,9 @@ const Commercial = require('../models/Commercial');
 
 /* GET new Commercial page */
 router.get('/', (req, res) => {
-    res.send('Add new commercial');
+    res.render('new-commercial', {
+        title: "Hire Community | New Commercial"
+    });
 });
 
 /* POST a new commercial */

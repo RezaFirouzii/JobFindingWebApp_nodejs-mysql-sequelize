@@ -4,8 +4,8 @@ const db = require('../config/db');
 const Commercial = require('../models/Commercial');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', function(req, res) {
+  res.render('index', { title: 'Hire Community | Home' });
 });
 
 module.exports = router;

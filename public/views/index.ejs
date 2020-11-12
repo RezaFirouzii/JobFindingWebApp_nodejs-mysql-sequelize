@@ -1,1 +1,24 @@
-index
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include templates/head.ejs %>
+    <title><%= title %></title>
+</head>
+
+<body>
+<header class="inner">
+    <% include templates/navbar.ejs %>
+</header>
+
+<section id="search" class="search-wrap">
+    <h1>Find A Gig, Get Hired</h1>
+    <form action="#" class="search-form">
+        <i class="fas fa-search"></i>
+        <input type="search" name="term" placeholder="Javascript, PHP, Rails, etc...">
+        <input type="submit" value="Search">
+    </form>
+</section>
+</body>
+
+</html>
