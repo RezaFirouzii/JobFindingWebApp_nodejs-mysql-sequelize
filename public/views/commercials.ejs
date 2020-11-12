@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include templates/head.ejs %>
+    <title><%= title %></title>
+</head>
+
+<body>
+<header class="inner">
+    <% include templates/navbar.ejs %>
+</header>
+<section id="gigs" class="container">
+    <h1>All Commercials</h1>
+    <% if (commercials.length) { %>
+        <% for (const commercial of commercials) { %>
+            <div class="gig">
+                <h3><%= commercial.title %></h3>
+                <p><%= commercial.description %></p>
+                <ul>
+                    <li>Budget: <%= commercial.budget %></li>
+                    <li><a href="mailto:<%= commercial.contact_email %>" class="btn btn-reverse">Apply Now</a></li>
+                </ul>
+                <div class="tech">
+                    <small>Technologies Needed: <span><%= commercial.technologies %></span></small>
+                </div>
+            </div>
+        <% } %>
+    <% } else { %>
+        <h3>No gigs available yet!</h3>
+    <% } %>
+</section>
+</body>
+
+</html>

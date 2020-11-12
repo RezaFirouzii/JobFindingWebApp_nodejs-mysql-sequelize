@@ -6,8 +6,10 @@ const Commercial = require('../models/Commercial');
 /* GET Commercials page. */
 router.get('/', (req, res) => {
     Commercial.findAll().then(commercials => {
-        console.log(commercials);
-        res.sendStatus(200);
+        res.render('commercials', {
+            commercials,
+            title: "Job Finding App | Commercials"
+        });
     }).catch(err => console.log(err));
 });
 
