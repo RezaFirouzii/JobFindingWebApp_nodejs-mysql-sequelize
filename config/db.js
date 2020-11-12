@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const db = new Sequelize('<Your database name>', '<Your MySql username>', '<Your MySql password>', {
+const db = new Sequelize('job_finder', 'root', 'e1985mysqlroot', {
     host: 'localhost',
     dialect: 'mysql',
     operatorsAliases: 'false',
