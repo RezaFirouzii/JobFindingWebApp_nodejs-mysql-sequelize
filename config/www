@@ -22,13 +22,17 @@ const server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
+// if database connection is OK, start the server
 db.authenticate().then(() => {
   server.listen(port);
   server.on('error', onError);
   server.on('listening', onListening);
   console.log(`Server started on port ${port}`);
   console.log('Connected to MySql server...');
-}).catch(err => console.log("Error: " + err));
+}).catch(err => {
+  console.log("Error: " + err);
+  process.exit(1);
+});
 
 
 /**
