@@ -69,6 +69,7 @@
                 const template = getErrorTemplate(error);
                 errorsContainer.appendChild(template);
             }
+            if (jsonResponse.errors[0].text.startsWith('✔')) resetInputs();
             window.scrollTo(0, 0);
         });
     });
@@ -84,6 +85,11 @@
             node.style.backgroundColor = 'darkred';
 
         return node;
+    }
+
+    function resetInputs() {
+        for (const input of form.elements)
+            if (input.name) input.value = '';
     }
 </script>
 </body>

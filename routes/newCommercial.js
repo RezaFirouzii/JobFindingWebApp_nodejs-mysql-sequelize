@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 
 /* POST a new commercial */
 router.post('/', (req, res) => {
-    const { title, technologies, budget, description, contact_email } = req.body;
+    let { title, technologies, budget, description, contact_email } = req.body;
     const errors = [];
     if (!title) errors.push({ text: 'Please add a title ✗' });
     if (!technologies) errors.push({ text: 'Please add some technologies ✗' });
@@ -29,6 +29,11 @@ router.post('/', (req, res) => {
             contact_email
         });
     } else {
+        if (Number(budget)) budget = `$${budget}`;
+        else budget = 'Unknown';
+
+        technologies = technologies.toLowerCase().replace(/ /g, '');
+
         Commercial.create({
             title,
             technologies,
