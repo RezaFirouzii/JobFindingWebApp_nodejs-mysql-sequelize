@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
         if (Number(budget)) budget = `$${budget}`;
         else budget = 'Unknown';
 
-        technologies = technologies.toLowerCase().replace(/ /g, '');
+        technologies = technologies.toLowerCase().replace(/, /g, ',');
 
         Commercial.create({
             title,

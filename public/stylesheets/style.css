@@ -299,3 +299,17 @@ label {
     width: 100%;
   }
 }
+
+/* Fade out animation */
+.fade-out {
+  opacity: 1;
+  animation-name: fade;
+  animation-timing-function: linear;
+  animation-duration: 3s;
+  animation-delay: 2s;
+}
+
+@keyframes fade {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}

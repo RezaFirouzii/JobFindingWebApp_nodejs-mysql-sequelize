@@ -71,6 +71,7 @@
             }
             if (jsonResponse.errors[0].text.startsWith('✔')) resetInputs();
             window.scrollTo(0, 0);
+            fadeMessages(errorsContainer.firstChild);
         });
     });
 
@@ -90,6 +91,16 @@
     function resetInputs() {
         for (const input of form.elements)
             if (input.name) input.value = '';
+    }
+
+    function fadeMessages(firstNode) {
+        if (Object.is(firstNode, null)) return;
+
+        firstNode.classList.add('fade-out');
+        setTimeout(() => {
+            errorsContainer.removeChild(firstNode);
+            fadeMessages(errorsContainer.firstChild);
+        }, 5000);
     }
 </script>
 </body>
