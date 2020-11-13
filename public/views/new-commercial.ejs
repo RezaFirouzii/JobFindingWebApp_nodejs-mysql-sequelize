@@ -12,13 +12,14 @@
 </header>
 <section id="add" class="container">
     <div class="form-wrap">
-        <h1>Add A Gig</h1>
-        <p>Your contact email will be shared with registered users to apply to your gig</p>
+        <h1>Add A Commercial</h1>
+        <p>Your contact email will be shared with registered users to apply to your job commercial</p>
+        <div id="errors"></div>
         <form>
             <div class="input-group">
-                <label for="title">Gig Title</label>
+                <label for="title">Commercial Title</label>
                 <input type="text" name="title" id="title" class="input-box" placeholder="eg. Small Wordpress website, React developer"
-                       maxlength="100" required>
+                       maxlength="100">
             </div>
             <div class="input-group">
                 <label for="technologies">Technologies Needed</label>
@@ -30,17 +31,60 @@
                 <input type="number" name="budget" id="budget" class="input-box" placeholder="eg. 500, 5000, 10000">
             </div>
             <div class="input-group">
-                <label for="description">Gig Description</label>
-                <textarea name="description" id="description" class="input-box" placeholder="Describe the details of the gig"
-                          rows="10" required></textarea>
+                <label for="description">Commercial Description</label>
+                <textarea name="description" id="description" class="input-box" placeholder="Describe the details of the commercial"
+                          rows="10"></textarea>
             </div>
             <div class="input-group">
                 <label for="budget">Contact Email</label>
-                <input type="email" name="contact_email" id="contactemail" class="input-box" placeholder="Enter an email"
-                       required>
+                <input type="email" name="contact_email" id="contactemail" class="input-box" placeholder="Enter an email">
             </div>
-            <input type="submit" value="Add Gig" class="btn btn-reverse">
+            <input type="submit" value="Add Commercial" class="btn btn-reverse">
         </form>
     </div>
 </section>
+<script>
+    const form = document.getElementsByTagName('form')[0];
+    const errorsContainer = document.getElementById('errors');
+    errorsContainer.style.display = 'none';
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        const data = {};
+        for (const input of form.elements)
+            if (input.name) data[input.name] = input.value;
+
+        fetch('/new-commercial', {
+            method: "post",
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => {
+            return response.json();
+        }).then(jsonResponse => {
+            errorsContainer.innerHTML = '';
+            errorsContainer.style.display = 'block';
+            for (const error of jsonResponse.errors) {
+                const template = getErrorTemplate(error);
+                errorsContainer.appendChild(template);
+            }
+            window.scrollTo(0, 0);
+        });
+    });
+
+    function getErrorTemplate(error) {
+        const node = document.createElement('div');
+        node.classList.add('error');
+        node.innerHTML = `<p>${ error.text }</p>`;
+
+        if (error.text.includes('✔'))
+            node.style.backgroundColor = 'green';
+        else
+            node.style.backgroundColor = 'darkred';
+
+        return node;
+    }
+</script>
 </body>
+</html>

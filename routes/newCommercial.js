@@ -12,7 +12,35 @@ router.get('/', (req, res) => {
 
 /* POST a new commercial */
 router.post('/', (req, res) => {
+    const { title, technologies, budget, description, contact_email } = req.body;
+    const errors = [];
+    if (!title) errors.push({ text: 'Please add a title ✗' });
+    if (!technologies) errors.push({ text: 'Please add some technologies ✗' });
+    if (!description) errors.push({ text: 'Please add a description ✗' });
+    if (!contact_email) errors.push({ text: 'Please add a contact email ✗' });
 
+    if (errors.length) {
+        res.json({
+            errors,
+            title,
+            technologies,
+            budget,
+            description,
+            contact_email
+        });
+    } else {
+        Commercial.create({
+            title,
+            technologies,
+            budget,
+            description,
+            contact_email
+        });
+        errors.push({
+            text: "✔ Your Commercial is registered successfully, Thanks!"
+        });
+        res.json({ errors });
+    }
 });
 
 module.exports = router;
