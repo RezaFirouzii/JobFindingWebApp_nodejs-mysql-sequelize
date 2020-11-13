@@ -1,5 +1,5 @@
-# Hire Community: Job finding application - Express & Sequelize
-&#11093; Simple job finding and job commercials web app for devs
+# Hire Community: Job finding app - Express & Sequelize
+&#11093; Simple job finding and job commercials web application for devs
 <h2> Serverside : </h2>
 <ul>
   <li> MySql </li>
