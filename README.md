@@ -22,7 +22,7 @@
 <h5> &#128308; Make sure MySql is installed on your PC.</h5>
 <h5> &#128308; Put your own MySql database name, username & password in /config/db.js file.</h5>
 <h5> &#128308; Copy and run the query below to create a table called  'commercials'  in your database :</h5>
-<code style="background-color: #f1f1f1">
+<code><pre>
   CREATE TABLE `commercials` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
@@ -33,7 +33,7 @@
   `createdAt` date DEFAULT NULL,
   `updatedAt` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;</pre>
 </code>
 
 <h2> Preview :</h2>
